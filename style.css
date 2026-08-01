@@ -1216,13 +1216,11 @@ ul {
 
 .footer__logo {
     display: inline-block;
-    height: 64px;
+    height: 60px;
     width: auto;
     object-fit: contain;
-    background: #ffffff;
-    padding: 10px 16px;
-    border-radius: var(--radius);
-    box-shadow: var(--shadow-md);
+    /* Logo transparent affiché en blanc sur le fond sombre du footer */
+    filter: brightness(0) invert(1);
     margin-bottom: 20px;
 }
 
