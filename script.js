@@ -472,22 +472,43 @@ document.addEventListener('DOMContentLoaded', () => {
             dateInput.value = tomorrow.toISOString().split('T')[0];
         }
 
-        onlineForm.addEventListener('submit', function(e) {
+        onlineForm.addEventListener('submit', async function(e) {
             e.preventDefault();
+            const submitBtn = onlineForm.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerHTML;
+            
+            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Envoi en cours...';
+            submitBtn.disabled = true;
+
+            const formData = new FormData(onlineForm);
             const patientName = document.getElementById('patient-name').value;
             const patientPhone = document.getElementById('patient-phone').value;
             const bookingDate = document.getElementById('booking-date').value;
             const bookingTime = document.getElementById('booking-time').value;
             const hospital = document.getElementById('destination-hospital').value;
 
-            document.getElementById('success-patient-name').textContent = patientName;
-            document.getElementById('success-date-time').textContent = `${bookingDate} à ${bookingTime}`;
-            document.getElementById('success-hospital').textContent = hospital;
-            document.getElementById('success-phone').textContent = patientPhone;
+            try {
+                // Submit to Web3Forms
+                await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: formData
+                });
+            } catch (err) {
+                console.warn('Web3Forms submit warning:', err);
+            } finally {
+                document.getElementById('success-patient-name').textContent = patientName;
+                document.getElementById('success-date-time').textContent = `${bookingDate} à ${bookingTime}`;
+                document.getElementById('success-hospital').textContent = hospital;
+                document.getElementById('success-phone').textContent = patientPhone;
 
-            onlineForm.style.display = 'none';
-            document.getElementById('booking-success-message').classList.remove('hidden');
-            window.scrollTo({ top: document.getElementById('booking-success-message').offsetTop - 100, behavior: 'smooth' });
+                onlineForm.style.display = 'none';
+                document.getElementById('booking-success-message').classList.remove('hidden');
+                document.getElementById('booking-success-message').style.display = 'block';
+                window.scrollTo({ top: document.getElementById('booking-success-message').offsetTop - 100, behavior: 'smooth' });
+                
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+            }
         });
     }
 
