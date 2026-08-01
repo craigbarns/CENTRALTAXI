@@ -421,6 +421,77 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // ===== ACCORDION FAQ =====
+    const accordionHeaders = document.querySelectorAll('.accordion-header');
+    accordionHeaders.forEach(header => {
+        header.addEventListener('click', function() {
+            const item = this.parentElement;
+            const isOpen = item.classList.contains('active');
+            
+            // Close other items
+            document.querySelectorAll('.accordion-item').forEach(el => el.classList.remove('active'));
+
+            if (!isOpen) {
+                item.classList.add('active');
+            }
+        });
+    });
+
+    // ===== ONLINE BOOKING FORM (reservation.html) =====
+    const onlineForm = document.getElementById('online-booking-form');
+    if (onlineForm) {
+        // Pre-fill URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const hospitalParam = urlParams.get('hospital');
+        const reasonParam = urlParams.get('reason');
+
+        if (hospitalParam) {
+            const select = document.getElementById('destination-hospital');
+            for (let option of select.options) {
+                if (option.value.toLowerCase().includes(hospitalParam.toLowerCase())) {
+                    option.selected = true;
+                    break;
+                }
+            }
+        }
+
+        if (reasonParam) {
+            const radios = document.querySelectorAll('input[name="reason"]');
+            radios.forEach(radio => {
+                if (radio.value.toLowerCase().includes(reasonParam.toLowerCase())) {
+                    radio.checked = true;
+                }
+            });
+        }
+
+        // Set default date to tomorrow
+        const dateInput = document.getElementById('booking-date');
+        if (dateInput && !dateInput.value) {
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            dateInput.value = tomorrow.toISOString().split('T')[0];
+        }
+
+        onlineForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const patientName = document.getElementById('patient-name').value;
+            const patientPhone = document.getElementById('patient-phone').value;
+            const bookingDate = document.getElementById('booking-date').value;
+            const bookingTime = document.getElementById('booking-time').value;
+            const hospital = document.getElementById('destination-hospital').value;
+
+            document.getElementById('success-patient-name').textContent = patientName;
+            document.getElementById('success-date-time').textContent = `${bookingDate} à ${bookingTime}`;
+            document.getElementById('success-hospital').textContent = hospital;
+            document.getElementById('success-phone').textContent = patientPhone;
+
+            onlineForm.style.display = 'none';
+            document.getElementById('booking-success-message').classList.remove('hidden');
+            window.scrollTo({ top: document.getElementById('booking-success-message').offsetTop - 100, behavior: 'smooth' });
+        });
+    }
+
     // ===== LOG LOADED =====
-    console.log('🚕 Central Taxi - Site chargé avec succès');
+    console.log('🚕 Central Taxi - Site multi-pages chargé avec succès');
 });
+
