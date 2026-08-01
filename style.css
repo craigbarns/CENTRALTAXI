@@ -2918,3 +2918,73 @@ ul {
 .article-body ul.check-list { margin: 12px 0 20px; }
 .numbered-steps { margin: 14px 0 20px 22px; color: var(--text-medium); line-height: 1.75; }
 .numbered-steps li { margin-bottom: 8px; }
+
+/* ==================================================================
+   AMÉLIORATIONS MOBILE (bloc prioritaire — placé en fin de feuille)
+   ================================================================== */
+
+/* Anti-débordement horizontal global */
+html, body { overflow-x: hidden; }
+img, svg, video { max-width: 100%; }
+
+/* FIX CRITIQUE : la grille réservation ne se repliait pas sur mobile
+   (sa définition de base était placée APRÈS la media query 992px). */
+@media (max-width: 992px) {
+    .reservation-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+    /* Marges latérales confortables */
+    .container { padding-left: 18px; padding-right: 18px; }
+    .header__container { padding-left: 16px; padding-right: 16px; }
+
+    /* Regrouper téléphone + menu à droite (évite le bouton flottant au centre) */
+    .header__phone { margin-left: auto; margin-right: 12px; width: 44px; height: 44px; }
+
+    /* Hero accueil : titres plus compacts et lisibles */
+    .hero__title { font-size: 1.9rem; line-height: 1.15; }
+    .hero__subtitle { font-size: 0.98rem; line-height: 1.6; }
+    .hero__container { padding: 24px 18px; }
+
+    /* Titres de cartes / articles adaptés au mobile */
+    .card-box h2, .article-body h2 { font-size: 1.3rem; line-height: 1.3; }
+    .card-box h3 { font-size: 1.12rem; }
+    .reservation-card__header h2 { font-size: 1.25rem; }
+    .article-lead { font-size: 1.05rem; }
+
+    /* Champs formulaire : 16px pour éviter le zoom auto iOS + cibles tactiles */
+    .form-input, .form-select, .form-textarea { font-size: 16px; }
+    .form-select { min-height: 50px; }
+
+    /* Cibles tactiles boutons */
+    .btn { min-height: 48px; }
+
+    /* Accordéon FAQ plus lisible */
+    .accordion-header { font-size: 0.98rem; }
+
+    /* Liens quartiers en une colonne */
+    .zones-links { padding: 24px 20px; }
+    .zones-links__list { grid-template-columns: 1fr; }
+
+    /* Espacement des blocs "atouts" */
+    .highlight-item { gap: 12px; }
+    .feature-highlights { gap: 14px; }
+}
+
+@media (max-width: 480px) {
+    .hero__title { font-size: 1.62rem; }
+    .page-hero h1 { font-size: 1.5rem; }
+    .badge-tag { font-size: 0.75rem; white-space: normal; line-height: 1.3; text-align: left; }
+    .breadcrumb { font-size: 0.78rem; flex-wrap: wrap; row-gap: 4px; }
+    .card-box, .reservation-card { padding: 22px 16px; }
+
+    /* Motifs de transport en 2 colonnes (2×2) au lieu d'une longue liste */
+    .radio-tiles { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .radio-tile__box { padding: 12px 8px; font-size: 0.78rem; }
+
+    /* Boutons flottants / barre d'appel */
+    .floating-call__btn { font-size: 0.95rem; }
+
+    /* Cartes hôpitaux : titres compacts */
+    .hospital-card h3 { font-size: 1.1rem; }
+}
