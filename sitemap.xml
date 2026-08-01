@@ -12,6 +12,8 @@
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
+
+    <!-- Pages Hôpitaux -->
     <url>
         <loc>https://www.central-taxi.fr/taxi-conventionne-institut-paoli-calmettes.html</loc>
         <lastmod>2026-08-01</lastmod>
@@ -31,11 +33,133 @@
         <priority>0.9</priority>
     </url>
     <url>
+        <loc>https://www.central-taxi.fr/taxi-conventionne-hopital-conception.html</loc>
+        <lastmod>2026-08-01</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.central-taxi.fr/taxi-conventionne-hopital-europeen.html</loc>
+        <lastmod>2026-08-01</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.central-taxi.fr/taxi-conventionne-hopital-sainte-marguerite.html</loc>
+        <lastmod>2026-08-01</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.central-taxi.fr/taxi-conventionne-hopital-saint-joseph.html</loc>
+        <lastmod>2026-08-01</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.central-taxi.fr/taxi-conventionne-hopital-clairval.html</loc>
+        <lastmod>2026-08-01</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Pages Pathologies -->
+    <url>
         <loc>https://www.central-taxi.fr/taxi-chimiotherapie-marseille.html</loc>
         <lastmod>2026-08-01</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
+    <url>
+        <loc>https://www.central-taxi.fr/taxi-dialyse-marseille.html</loc>
+        <lastmod>2026-08-01</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.central-taxi.fr/taxi-radiotherapie-marseille.html</loc>
+        <lastmod>2026-08-01</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.central-taxi.fr/transport-ald-100-marseille.html</loc>
+        <lastmod>2026-08-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.central-taxi.fr/taxi-sans-avance-de-frais-marseille.html</loc>
+        <lastmod>2026-08-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Pages Zones / Quartiers -->
+    <url>
+        <loc>https://www.central-taxi.fr/taxi-conventionne-13011.html</loc>
+        <lastmod>2026-08-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.central-taxi.fr/taxi-conventionne-13012.html</loc>
+        <lastmod>2026-08-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.central-taxi.fr/taxi-conventionne-13010.html</loc>
+        <lastmod>2026-08-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.central-taxi.fr/taxi-conventionne-13009.html</loc>
+        <lastmod>2026-08-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.central-taxi.fr/taxi-conventionne-aubagne.html</loc>
+        <lastmod>2026-08-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.central-taxi.fr/taxi-conventionne-allauch.html</loc>
+        <lastmod>2026-08-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.central-taxi.fr/taxi-conventionne-plan-de-cuques.html</loc>
+        <lastmod>2026-08-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Blog -->
+    <url>
+        <loc>https://www.central-taxi.fr/blog.html</loc>
+        <lastmod>2026-08-01</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.central-taxi.fr/blog-remboursement-taxi-hopital-marseille.html</loc>
+        <lastmod>2026-08-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://www.central-taxi.fr/blog-taxi-ou-ambulance-chimiotherapie.html</loc>
+        <lastmod>2026-08-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <!-- Pages outils -->
     <url>
         <loc>https://www.central-taxi.fr/faq.html</loc>
         <lastmod>2026-08-01</lastmod>
