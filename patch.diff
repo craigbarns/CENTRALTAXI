@@ -1,0 +1,243 @@
+--- index.html
++++ index.html
+@@ -305,17 +305,10 @@
+                 </div>
+                 <h1 class="hero__title">
+                     CENTRAL TAXI<br>
+-                    <span
+-                        style="font-size: 0.6em; font-weight: 500; display: block; margin-bottom: 0.5em; line-height: 1.2;">LA
+-                        PONCTUALITE EST NOTRE PRIORITE</span>
+-                    <span class="hero__title-highlight">Transport Médicalisé</span><br>
+-                    VERS TOUS LES HOPITAUX DE MARSEILLE
++                    <span class="hero__title-highlight">Transport Médicalisé Conventionné CPAM 13</span><br>
++                    <span style="font-size: 0.6em; font-weight: 500; display: block; margin-top: 0.5em; line-height: 1.2;">La ponctualité comme priorité thérapeutique</span>
+                 </h1>
+                 <p class="hero__subtitle">
+-                    Une société de Taxi conventionnés CPAM depuis plus de 15 ans, spécialisé dans le transport médical
+-                    assis, où la ponctualité et le respect du patient sont bien plus qu’un service, mais un engagement.
+-                    Réservez votre transport dès maintenant en toute tranquillité pour avoir la certitude d’avoir un
+-                    taxi mais surtout d’être à l’heure à votre rdv
++                    Depuis plus de 15 ans, Central Taxi assure le transport médical assis conventionné CPAM sur Marseille et le département des Bouches-du-Rhône (13). Basée à Saint-Menet (13011), notre structure spécialisée garantit des trajets médicaux où ponctualité, discrétion et respect du patient constituent bien plus qu'un service : un engagement sanitaire.
+                 </p>
+                 <div class="hero__actions">
+                     <a href="javascript:void(0)" class="btn btn--primary phone-link" id="hero-call-btn"
+@@ -361,16 +354,10 @@
+         <div class="services__container">
+             <div class="section-header">
+                 <span class="section-tag"><i class="fa-solid fa-hand-holding-medical"></i> Nos prestations</span>
+-                <h2 class="section-title">Nos Services de Transport Médical</h2>
+-                <p class="section-subtitle">
+-                    Taxi conventionné CPAM depuis votre domicile quel que soit votre département, notre équipe est
+-                    habilité à venir vous chercher devant chez vous pour vous emmener jusqu’à destination. Un simple
+-                    appel vous permettra de prendre contact avec nous ou par mail, un opérateur vous rappellera dans les
+-                    meilleurs délais.
+-                </p>
+-            </div>
+-
+-            <div class="services__grid">
+-                <!-- Service 4 - SPÉCIALITÉ -->
++                <h2 class="section-title">Nos Spécialités Médicales</h2>
++            </div>
++
++            <div class="services__grid">
++                <!-- Service 1 - SPÉCIALITÉ -->
+                 <article class="service-card service-card--featured" id="service-chimio">
+                     <div class="service-card__badge">Spécialité</div>
+                     <div class="service-card__icon">
+@@ -378,27 +365,13 @@
+                     </div>
+-                    <h3 class="service-card__title">Taxi Chimiothérapie & Radiothérapie</h3>
+-                    <p class="service-card__text">
+-                        Transport régulier vers Institut Paoli-Calmettes, Timone, Conception.
+-                        Chauffeurs formés aux spécificités des traitements oncologiques.
+-                        Ponctualité irréprochable pour vos séances.
++                    <h3 class="service-card__title">Oncologie – Chimiothérapie & Radiothérapie</h3>
++                    <p class="service-card__text">
++                        Transport régulier vers l'Institut Paoli-Calmettes, l'Hôpital de la Timone et la Conception. Nos chauffeurs sont formés aux spécificités des traitements oncologiques (fatigue, immunodépression, horaires stricts). Ponctualité irréprochable pour vos séances programmées.
+                     </p>
+                     <span class="service-card__tag">taxi chimiothérapie marseille</span>
+-                </article>
+-
+-                <!-- Service 5 -->
+-                <article class="service-card" id="service-cpam">
+-                    <div class="service-card__icon">
+-                        <i class="fa-solid fa-file-invoice-dollar"></i>
+-                    </div>
+-                    <h3 class="service-card__title">Taxi Conventionné CPAM</h3>
+-                    <p class="service-card__text">
+-                        Etant en ADL (100%) vous n’aurez qu’a présenter votre Prescription Médicale de Transport et nous
+-                        rappeler pour votre retour, nous vous enverrons un taxi le plus proche de vous.
+-                    </p>
+-                    <span class="service-card__tag">conventionné CPAM 13</span>
+-                </article>
+-
+-                <!-- Service 6 -->
++                </article>
++
++                <!-- Service 2 -->
+                 <article class="service-card" id="service-programme">
+                     <div class="service-card__icon">
+                         <i class="fa-solid fa-calendar-check"></i>
+@@ -405,9 +378,19 @@
+                     <h3 class="service-card__title">Transport Assis Programmé</h3>
+                     <p class="service-card__text">
+-                        Trajets réguliers vers centres de dialyse, hôpitaux de jour, consultations de suivi.
+-                        Réservation possible à l'avance. Fiabilité et ponctualité garanties.
++                        Dialyse, hospitalisation de jour, consultations de suivi chronique : réservez vos trajets réguliers à l'avance et bénéficiez d'une fiabilité totale pour vos rendez-vous thérapeutiques.
+                     </p>
+                     <span class="service-card__tag">transport programmé</span>
+                 </article>
++
++                <!-- Service 3 -->
++                <article class="service-card" id="service-cpam">
++                    <div class="service-card__icon">
++                        <i class="fa-solid fa-file-invoice-dollar"></i>
++                    </div>
++                    <h3 class="service-card__title">Conventionné CPAM 100%</h3>
++                    <p class="service-card__text">
++                        Étant agréé ADL (Affection de Longue Durée) à 100%, présentez simplement votre Prescription Médicale de Transport (PMT). Aucune avance de frais : nous appliquons le tiers-payant direct. Pour votre retour, un simple appel suffit – nous positionnons le taxi le plus proche immédiatement.
++                    </p>
++                    <span class="service-card__tag">conventionné CPAM 13</span>
++                </article>
+             </div>
+         </div>
+     </section>
+@@ -432,10 +415,8 @@
+         <div class="zones__container">
+             <div class="section-header">
+                 <span class="section-tag"><i class="fa-solid fa-map-location-dot"></i> Notre couverture</span>
+-                <h2 class="section-title">Zone d'Intervention</h2>
+-                <p class="section-subtitle">
+-                    Nous nous déplaçons jusqu’à devant chez vous pour vous donner un maximum de satisfaction sur un
+-                    simple appel au préalable vers tous les établissements de sante de marseille, et du departement du
+-                    13.
++                <h2 class="section-title">Zone d'Intervention Optimisée</h2>
++                <p class="section-subtitle">
++                    Nous nous déplaçons jusqu'à votre domicile, quel que soit votre département d'origine, pour vous accompagner vers tous les établissements de santé marseillais.
+                 </p>
+             </div>
+ 
+@@ -487,7 +468,7 @@
+                             </div>
+                         </div>
+                         <div class="zones__map-footer">
+-                            <p><i class="fa-solid fa-circle-info"></i> Secteur privilégié : 11ème, 12ème, 4ème
+-                                arrondissements</p>
++                            <p><i class="fa-solid fa-circle-info"></i> Secteur privilégié : 11ème, 12ème et 4ème
++                                arrondissements de Marseille. Intervention : Tout le département 13 (Bouches-du-Rhône).</p>
+                         </div>
+                     </div>
+                 </div>
+@@ -495,5 +476,5 @@
+                 <!-- Hospitals List -->
+                 <div class="zones__hospitals">
+-                    <h3 class="zones__hospitals-title">Principaux hôpitaux desservis</h3>
++                    <h3 class="zones__hospitals-title">Hôpitaux desservis (délais moyens depuis base) :</h3>
+                     <div class="zones__hospitals-grid">
+                         <div class="hospital-card" id="hospital-nord">
+                             <div class="hospital-card__icon"><i class="fa-solid fa-hospital"></i></div>
+@@ -562,9 +543,8 @@
+                 <div class="why-card" id="why-localisation">
+                     <div class="why-card__number">01</div>
+                     <div class="why-card__icon"><i class="fa-solid fa-map-pin"></i></div>
+-                    <h3 class="why-card__title">Localisation idéale</h3>
+-                    <p class="why-card__text">
+-                        Une équipe de chauffeurs basé dans tous les départements avoisinants Marseille pour une
+-                        meilleure optimisation des transports
++                    <h3 class="why-card__title">Expertise locale</h3>
++                    <p class="why-card__text">
++                        Chauffeurs basés stratégiquement autour de Marseille pour une optimisation des temps de réponse.
+                     </p>
+                 </div>
+ 
+@@ -572,9 +552,8 @@
+                     <div class="why-card__number">02</div>
+                     <div class="why-card__icon"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+-                    <h3 class="why-card__title">Conventionné CPAM</h3>
+-                    <p class="why-card__text">
+-                        Agréé CPAM, <strong>pas d'avance de frais</strong>.
+-                        Le tiers-payant simplifie vos démarches pour chaque transport médical.
++                    <h3 class="why-card__title">Conventionnement CPAM</h3>
++                    <p class="why-card__text">
++                        Agrément officiel, zéro frais à l'avance, démarches administratives simplifiées.
+                     </p>
+                 </div>
+ 
+@@ -581,9 +560,8 @@
+                     <div class="why-card__number">03</div>
+                     <div class="why-card__icon"><i class="fa-solid fa-user-nurse"></i></div>
+-                    <h3 class="why-card__title">Chauffeurs formés</h3>
+-                    <p class="why-card__text">
+-                        Chauffeurs formés spécifiquement au transport médical.
+-                        Discrétion, empathie et professionnalisme à chaque course.
++                    <h3 class="why-card__title">Formation médicale</h3>
++                    <p class="why-card__text">
++                        Chauffeurs spécifiquement formés au transport sanitaire : discrétion, empathie et protocoles d'accompagnement.
+                     </p>
+                 </div>
+ 
+@@ -590,9 +568,8 @@
+                     <div class="why-card__number">04</div>
+                     <div class="why-card__icon"><i class="fa-solid fa-ribbon"></i></div>
+-                    <h3 class="why-card__title">Expert oncologie</h3>
+-                    <p class="why-card__text">
+-                        Spécialisation dans les trajets <strong>chimiothérapie & radiothérapie</strong>.
+-                        Ponctualité et accompagnement adapté à vos traitements.
++                    <h3 class="why-card__title">Spécialisation oncologie</h3>
++                    <p class="why-card__text">
++                        Expertise reconnue dans les trajets chimiothérapie/radiothérapie avec respect des contraintes horaires immuables.
+                     </p>
+                 </div>
+ 
+@@ -599,10 +576,22 @@
+                     <div class="why-card__number">05</div>
+                     <div class="why-card__icon"><i class="fa-solid fa-clock"></i></div>
+-                    <h3 class="why-card__title">Disponible 24h/24</h3>
+-                    <p class="why-card__text">
+-                        <strong>7 jours sur 7, 24 heures sur 24</strong> pour les urgences médicales conventionnées.
+-                        Réservation conseillée pour les transports programmés.
+-                    </p>
++                    <h3 class="why-card__title">Disponibilité permanente</h3>
++                    <p class="why-card__text">
++                        7j/7, 24h/24 pour urgences conventionnées. Réservation conseillée pour transports programmés.
++                    </p>
++                </div>
++            </div>
++
++            <div class="testimonials" style="margin-top: 4rem; display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center;">
++                <div class="testimonial-card" style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); max-width: 400px; flex: 1;">
++                    <i class="fa-solid fa-quote-left" style="color: var(--primary); font-size: 2rem; margin-bottom: 1rem;"></i>
++                    <p style="font-style: italic; color: #4a5568; margin-bottom: 1rem;">"Chauffeur très ponctuel et rassurant pour mes séances de radiothérapie. Merci pour votre professionnalisme quotidien dans ces moments difficiles."</p>
++                    <span class="testimonial-author" style="font-weight: 600; color: var(--dark);">— Marie L.</span>
++                </div>
++                <div class="testimonial-card" style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); max-width: 400px; flex: 1;">
++                    <i class="fa-solid fa-quote-left" style="color: var(--primary); font-size: 2rem; margin-bottom: 1rem;"></i>
++                    <p style="font-style: italic; color: #4a5568; margin-bottom: 1rem;">"Pas d'avance de frais et une prise en charge directement devant mon domicile. Le service de l'équipe Central Taxi est impeccable et rassurant."</p>
++                    <span class="testimonial-author" style="font-weight: 600; color: var(--dark);">— Jean-Marc D.</span>
+                 </div>
+             </div>
+         </div>
+@@ -619,10 +608,10 @@
+                 </div>
+ 
+                 <div class="footer__contact">
+-                    <h3 class="footer__heading">Contact</h3>
++                    <h3 class="footer__heading">Contact & Réservation</h3>
+                     <ul class="footer__contact-list">
+                         <li>
+                             <i class="fa-solid fa-location-dot"></i>
+-                            <span>Marseille (Département 13)</span>
++                            <span>Saint-Menet, 13011 Marseille</span>
+                         </li>
+                         <li>
+@@ -668,7 +657,7 @@
+             </div>
+ 
+             <div class="footer__bottom">
+-                <p>&copy; 2025 Central Taxi - Marseille. Tous droits réservés.</p>
+-                <p class="footer__legal">Taxis conventionnés • Agrément CPAM 13 • Transport sanitaire</p>
++                <p>&copy; 2025 Central Taxi - Transport médicalisé conventionné CPAM 13. Tous droits réservés.</p>
++                <p class="footer__legal">Agrément CPAM 13 – Sans avance de frais – Taxis conventionnés</p>
+             </div>
+         </div>
+     </footer>
