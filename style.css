@@ -1215,8 +1215,14 @@ ul {
 }
 
 .footer__logo {
-    display: flex;
-    align-items: center;
+    display: inline-block;
+    height: 64px;
+    width: auto;
+    object-fit: contain;
+    background: #ffffff;
+    padding: 10px 16px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
     margin-bottom: 20px;
 }
 
