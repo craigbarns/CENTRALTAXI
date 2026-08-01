@@ -1030,8 +1030,9 @@ ul {
     gap: 12px;
 }
 
-.hospital-card {
+.zones__hospitals-grid .hospital-card {
     display: flex;
+    flex-direction: row;
     align-items: center;
     gap: 16px;
     padding: 16px 20px;
@@ -1041,14 +1042,14 @@ ul {
     transition: var(--transition);
 }
 
-.hospital-card:hover {
+.zones__hospitals-grid .hospital-card:hover {
     background: var(--bg-white);
     border-color: var(--secondary);
     box-shadow: var(--shadow);
     transform: translateX(4px);
 }
 
-.hospital-card__icon {
+.zones__hospitals-grid .hospital-card__icon {
     width: 40px;
     height: 40px;
     border-radius: var(--radius-sm);
@@ -1059,6 +1060,7 @@ ul {
     color: var(--primary);
     font-size: 1rem;
     flex-shrink: 0;
+    margin-bottom: 0;
 }
 
 .hospital-card__info h4 {
@@ -1193,7 +1195,7 @@ ul {
    FOOTER
    ====================================== */
 .footer {
-    background: #0c1e33;
+    background: linear-gradient(135deg, #1f1b19 0%, #0f0705 100%);
     color: rgba(255, 255, 255, 0.7);
     position: relative;
 }
@@ -1540,7 +1542,7 @@ ul {
         display: block;
     }
 
-    body {
+    body:has(.mobile-cta) {
         padding-bottom: 72px;
     }
 
@@ -1699,7 +1701,6 @@ ul {
     justify-content: center;
     font-size: 1.1rem;
     transition: var(--transition);
-    z-index: 10;
 }
 
 .modal__close:hover {
@@ -1961,7 +1962,7 @@ ul {
 /* Section Hôpitaux */
 .hospitals-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
     gap: 24px;
     margin-top: 40px;
 }
@@ -2064,7 +2065,7 @@ ul {
 }
 
 .page-hero h1 {
-    font-size: 2.2rem;
+    font-size: clamp(1.6rem, 4.5vw, 2.2rem);
     font-weight: 800;
     line-height: 1.2;
     margin: 12px 0;
@@ -2192,10 +2193,26 @@ ul {
 }
 
 .accordion-content {
+    display: none;
     padding-bottom: 18px;
     color: var(--text-medium);
     font-size: 0.95rem;
     line-height: 1.6;
+}
+
+.accordion-item.active .accordion-content {
+    display: block;
+}
+
+.accordion-header i {
+    transition: transform 0.25s ease;
+    color: var(--secondary);
+    flex-shrink: 0;
+    margin-left: 12px;
+}
+
+.accordion-item.active .accordion-header i {
+    transform: rotate(180deg);
 }
 
 /* Reservation & Booking Layout */
@@ -2348,7 +2365,7 @@ ul {
 
 .reviews-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
     gap: 24px;
 }
 
@@ -2389,4 +2406,422 @@ ul {
 .review-date {
     font-size: 0.8rem;
     color: var(--text-lighter);
+}
+/* ======================================
+   CORRECTIONS AUDIT — CLASSES MANQUANTES
+   ====================================== */
+
+/* Utilitaires */
+.hidden {
+    display: none !important;
+}
+
+.section-padding {
+    padding: 72px 0;
+}
+
+.shadow-md {
+    box-shadow: var(--shadow-md);
+}
+
+.shadow-lg {
+    box-shadow: var(--shadow-lg);
+}
+
+.breadcrumb .current {
+    color: #fff;
+    font-weight: 600;
+}
+
+/* Layout pages internes */
+.main-content,
+.sidebar {
+    min-width: 0;
+}
+
+/* Page réservation */
+.reservation-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 32px;
+    align-items: start;
+}
+
+.reservation-card {
+    background: var(--bg-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 36px 32px;
+}
+
+.reservation-card__header {
+    margin-bottom: 28px;
+}
+
+.reservation-card__header h2 {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+}
+
+.reservation-card__header h2 i {
+    color: var(--secondary);
+    margin-right: 8px;
+}
+
+.reservation-card__header p {
+    color: var(--text-medium);
+    font-size: 0.95rem;
+}
+
+.reservation-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.info-card {
+    background: var(--bg-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 28px 24px;
+}
+
+.info-card h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 14px;
+}
+
+.info-card h3 i {
+    color: var(--secondary);
+    margin-right: 8px;
+}
+
+.info-card p {
+    font-size: 0.92rem;
+    color: var(--text-medium);
+    line-height: 1.6;
+}
+
+.docs-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.docs-list li {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    font-size: 0.9rem;
+    color: var(--text-medium);
+    line-height: 1.5;
+}
+
+.docs-list li i {
+    color: var(--secondary);
+    margin-top: 3px;
+    flex-shrink: 0;
+}
+
+.highlight-card {
+    background: linear-gradient(180deg, #fff7f4 0%, #ffffff 100%);
+    border-color: rgba(218, 77, 20, 0.3);
+}
+
+.rating-badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 16px;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+}
+
+.stars {
+    color: #ffb400;
+    font-size: 1rem;
+    letter-spacing: 2px;
+}
+
+.emergency-card {
+    background: linear-gradient(135deg, #1f1b19 0%, #2b2624 100%);
+    border: none;
+    color: #fff;
+}
+
+.emergency-card h3 {
+    color: #fff;
+}
+
+.emergency-card p {
+    color: #d1c5c1;
+    margin-bottom: 16px;
+}
+
+.form-disclaimer {
+    margin-top: 14px;
+    font-size: 0.82rem;
+    color: var(--text-light);
+    text-align: center;
+    line-height: 1.5;
+}
+
+.form-disclaimer i {
+    color: var(--secondary);
+    margin-right: 6px;
+}
+
+/* Bouton d'appel flottant (mobile uniquement) */
+.floating-call {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-top: 1px solid var(--border);
+    z-index: 998;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.floating-call__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, var(--secondary), var(--secondary-dark));
+    color: #fff;
+    font-weight: 700;
+    border-radius: var(--radius);
+}
+
+/* Footer harmonisé (footer__grid utilisé sur les pages internes) */
+.footer__grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 48px;
+    padding: 64px 0 48px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer__title {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.footer__links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer__links a {
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.6);
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.footer__links a::before {
+    content: '›';
+    color: var(--secondary);
+    font-weight: 700;
+}
+
+.footer__links a:hover {
+    color: var(--secondary-light);
+    padding-left: 4px;
+}
+
+.footer__contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 0.88rem;
+    margin-bottom: 14px;
+}
+
+.footer__contact-item i {
+    color: var(--secondary);
+    width: 18px;
+    text-align: center;
+    margin-top: 3px;
+    flex-shrink: 0;
+}
+
+.footer__contact-item a {
+    color: rgba(255, 255, 255, 0.7);
+    transition: var(--transition);
+}
+
+.footer__contact-item a:hover {
+    color: var(--secondary-light);
+}
+
+/* Page avis */
+.score-highlights {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.score-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.score-item i {
+    color: var(--secondary-light);
+    font-size: 1.1rem;
+    width: 22px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.author-info strong {
+    display: block;
+    color: var(--text-dark);
+    font-size: 0.98rem;
+}
+
+.review-cta-box {
+    margin-top: 40px;
+    background: var(--bg-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 36px 32px;
+    text-align: center;
+}
+
+.review-cta-box h3 {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+}
+
+.review-cta-box p {
+    color: var(--text-medium);
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+}
+
+/* Bannière CTA FAQ */
+.faq-cta-banner {
+    margin-top: 36px;
+    padding: 32px 28px;
+    background: linear-gradient(135deg, #1f1b19 0%, #2b2624 100%);
+    border-radius: var(--radius-lg);
+    color: #fff;
+    text-align: center;
+}
+
+.faq-cta-banner h3 {
+    font-size: 1.25rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.faq-cta-banner p {
+    color: #d1c5c1;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+}
+
+/* Header quand le menu mobile est ouvert */
+.header--nav-open {
+    background: rgba(26, 26, 26, 0.97) !important;
+    backdrop-filter: none !important;
+    border-bottom-color: transparent !important;
+    box-shadow: none !important;
+}
+
+.header--nav-open .header__logo-img {
+    filter: brightness(0) invert(1);
+}
+
+.header--nav-open .header__hamburger span {
+    background: #fff !important;
+}
+
+/* Menu mobile : scroll possible sur petits écrans */
+.mobile-nav {
+    overflow-y: auto;
+}
+
+/* Interaction tactile cartes services */
+.service-card.touch-active {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--secondary);
+}
+
+/* Responsive corrections */
+@media (max-width: 992px) {
+    .cta-sidebar-card {
+        position: static;
+    }
+}
+
+@media (max-width: 768px) {
+    .section-padding {
+        padding: 48px 0;
+    }
+
+    .booking-form {
+        grid-template-columns: 1fr;
+    }
+
+    .footer__grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        padding: 48px 0 32px;
+    }
+
+    .card-box,
+    .reservation-card {
+        padding: 24px 20px;
+    }
+
+    .hospital-card {
+        padding: 24px 20px;
+    }
+
+    .score-summary-card {
+        padding: 28px 20px;
+    }
+
+    .page-hero {
+        padding: calc(var(--header-height) + 30px) 0 48px;
+    }
+
+    .floating-call {
+        display: block;
+    }
+
+    body:has(.floating-call) {
+        padding-bottom: 76px;
+    }
+}
+
+@media (max-width: 480px) {
+    .btn {
+        white-space: normal;
+    }
 }

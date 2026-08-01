@@ -7,21 +7,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ===== HEADER SCROLL EFFECT =====
     const header = document.getElementById('header');
-    let lastScroll = 0;
 
-    const handleScroll = () => {
-        const currentScroll = window.pageYOffset;
+    if (header) {
+        const handleScroll = () => {
+            if (window.pageYOffset > 50) {
+                header.classList.add('header--scrolled');
+            } else {
+                header.classList.remove('header--scrolled');
+            }
+        };
 
-        if (currentScroll > 50) {
-            header.classList.add('header--scrolled');
-        } else {
-            header.classList.remove('header--scrolled');
-        }
-
-        lastScroll = currentScroll;
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
+        window.addEventListener('scroll', handleScroll, { passive: true });
+    }
 
     // ===== HAMBURGER MENU =====
     const hamburger = document.getElementById('hamburger-btn');
@@ -31,7 +28,9 @@ document.addEventListener('DOMContentLoaded', () => {
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
             mobileNav.classList.toggle('active');
-            document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+            const isOpen = mobileNav.classList.contains('active');
+            if (header) header.classList.toggle('header--nav-open', isOpen);
+            document.body.style.overflow = isOpen ? 'hidden' : '';
         });
 
         // Close mobile nav on link click
@@ -39,6 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
             link.addEventListener('click', () => {
                 hamburger.classList.remove('active');
                 mobileNav.classList.remove('active');
+                if (header) header.classList.remove('header--nav-open');
                 document.body.style.overflow = '';
             });
         });
@@ -53,14 +53,14 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.phone-link').forEach(link => {
         link.addEventListener('click', function (e) {
             e.preventDefault();
-            const phone = this.getAttribute('data-phone');
+            const phone = this.getAttribute('data-phone') || '0638518137';
 
             if (isMobileDevice()) {
                 // Sur mobile : appel natif
                 window.location.href = 'tel:' + phone;
             } else {
                 // Sur desktop : copier le numéro dans le presse-papier
-                const formattedPhone = '06 38 51 81 37';
+                const formattedPhone = phone.replace(/(\d{2})(?=\d)/g, '$1 ');
                 navigator.clipboard.writeText(formattedPhone).then(() => {
                     showPhoneTooltip(this, '✓ Numéro copié !');
                 }).catch(() => {
@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const target = document.querySelector(targetId);
             if (target) {
                 e.preventDefault();
-                const headerHeight = header.offsetHeight;
+                const headerHeight = header ? header.offsetHeight : 0;
                 const targetPosition = target.offsetTop - headerHeight;
 
                 window.scrollTo({
@@ -220,20 +220,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.reveal').forEach(el => {
         observer.observe(el);
     });
-
-    // ===== COUNTER ANIMATION (for future stats section) =====
-    const animateCounter = (element, target, duration = 2000) => {
-        let start = 0;
-        const step = timestamp => {
-            if (!start) start = timestamp;
-            const progress = Math.min((timestamp - start) / duration, 1);
-            element.textContent = Math.floor(progress * target);
-            if (progress < 1) {
-                requestAnimationFrame(step);
-            }
-        };
-        requestAnimationFrame(step);
-    };
 
     // ===== MOBILE STICKY CTA SHOW/HIDE =====
     const mobileCta = document.getElementById('mobile-cta');
@@ -301,14 +287,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('reservation-modal');
     const modalCloseBtn = document.getElementById('modal-close-btn');
     const reservationForm = document.getElementById('reservation-form');
-    const reservationSuccess = document.getElementById('reservation-success');
     const destinationSelect = document.getElementById('res-destination');
     const autreDestGroup = document.getElementById('autre-destination-group');
 
     // Open modal from all reservation buttons
-    const openModalBtns = document.querySelectorAll('.open-reservation-btn, #nav-reservation-btn');
+    const openModalBtns = document.querySelectorAll('.open-reservation-btn');
 
     function openModal() {
+        if (!modal) return;
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
         // Close mobile nav if open
@@ -423,16 +409,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ===== ACCORDION FAQ =====
     const accordionHeaders = document.querySelectorAll('.accordion-header');
-    accordionHeaders.forEach(header => {
-        header.addEventListener('click', function() {
+    accordionHeaders.forEach(h => h.setAttribute('aria-expanded', 'false'));
+    accordionHeaders.forEach(accHeader => {
+        accHeader.addEventListener('click', function() {
             const item = this.parentElement;
             const isOpen = item.classList.contains('active');
-            
+
             // Close other items
             document.querySelectorAll('.accordion-item').forEach(el => el.classList.remove('active'));
+            accordionHeaders.forEach(h => h.setAttribute('aria-expanded', 'false'));
 
             if (!isOpen) {
                 item.classList.add('active');
+                this.setAttribute('aria-expanded', 'true');
             }
         });
     });
@@ -440,6 +429,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // ===== ONLINE BOOKING FORM (reservation.html) =====
     const onlineForm = document.getElementById('online-booking-form');
     if (onlineForm) {
+        // Comparaison insensible aux accents, tirets et majuscules (ex: "Hopital-Nord" ↔ "Hôpital Nord (AP-HM)")
+        const normalize = str => str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]/gi, '').toLowerCase();
+
         // Pre-fill URL parameters
         const urlParams = new URLSearchParams(window.location.search);
         const hospitalParam = urlParams.get('hospital');
@@ -447,65 +439,69 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (hospitalParam) {
             const select = document.getElementById('destination-hospital');
-            for (let option of select.options) {
-                if (option.value.toLowerCase().includes(hospitalParam.toLowerCase())) {
-                    option.selected = true;
-                    break;
+            if (select) {
+                for (let option of select.options) {
+                    if (normalize(option.value).includes(normalize(hospitalParam))) {
+                        option.selected = true;
+                        break;
+                    }
                 }
             }
         }
 
         if (reasonParam) {
-            const radios = document.querySelectorAll('input[name="reason"]');
-            radios.forEach(radio => {
-                if (radio.value.toLowerCase().includes(reasonParam.toLowerCase())) {
+            document.querySelectorAll('input[name="reason"]').forEach(radio => {
+                if (normalize(radio.value).includes(normalize(reasonParam))) {
                     radio.checked = true;
                 }
             });
         }
 
-        // Set default date to tomorrow
+        // Date par défaut : demain, et interdiction des dates passées
         const dateInput = document.getElementById('booking-date');
-        if (dateInput && !dateInput.value) {
-            const tomorrow = new Date();
-            tomorrow.setDate(tomorrow.getDate() + 1);
-            dateInput.value = tomorrow.toISOString().split('T')[0];
+        if (dateInput) {
+            const today = new Date();
+            dateInput.min = today.toISOString().split('T')[0];
+            if (!dateInput.value) {
+                const tomorrow = new Date();
+                tomorrow.setDate(tomorrow.getDate() + 1);
+                dateInput.value = tomorrow.toISOString().split('T')[0];
+            }
         }
 
         onlineForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             const submitBtn = onlineForm.querySelector('button[type="submit"]');
             const originalBtnText = submitBtn.innerHTML;
-            
+
             submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Envoi en cours...';
             submitBtn.disabled = true;
 
             const formData = new FormData(onlineForm);
-            const patientName = document.getElementById('patient-name').value;
-            const patientPhone = document.getElementById('patient-phone').value;
-            const bookingDate = document.getElementById('booking-date').value;
-            const bookingTime = document.getElementById('booking-time').value;
-            const hospital = document.getElementById('destination-hospital').value;
 
             try {
-                // Submit to Web3Forms
-                await fetch('https://api.web3forms.com/submit', {
+                const response = await fetch('https://api.web3forms.com/submit', {
                     method: 'POST',
                     body: formData
                 });
-            } catch (err) {
-                console.warn('Web3Forms submit warning:', err);
-            } finally {
-                document.getElementById('success-patient-name').textContent = patientName;
-                document.getElementById('success-date-time').textContent = `${bookingDate} à ${bookingTime}`;
-                document.getElementById('success-hospital').textContent = hospital;
-                document.getElementById('success-phone').textContent = patientPhone;
 
-                onlineForm.style.display = 'none';
-                document.getElementById('booking-success-message').classList.remove('hidden');
-                document.getElementById('booking-success-message').style.display = 'block';
-                window.scrollTo({ top: document.getElementById('booking-success-message').offsetTop - 100, behavior: 'smooth' });
-                
+                if (response.ok) {
+                    // Redirection vers la page de remerciement (suivi de conversion)
+                    window.location.href = 'merci.html';
+                    return;
+                }
+
+                const data = await response.json().catch(() => ({}));
+                alert('Erreur lors de l\'envoi : ' + (data.message || 'veuillez réessayer ou nous appeler au 06 38 51 81 37.'));
+            } catch (err) {
+                console.error('Erreur Web3Forms:', err);
+                // Fallback email si le réseau ou un bloqueur empêche l'envoi
+                const dataObj = Object.fromEntries(formData.entries());
+                const subject = `Réservation Transport - ${dataObj.patient_name || ''}`;
+                const body = `Nom: ${dataObj.patient_name}%0ATéléphone: ${dataObj.patient_phone}%0AMotif: ${dataObj.reason}%0ADate: ${dataObj.booking_date} ${dataObj.booking_time}%0ADépart: ${dataObj.pickup_address}%0ADestination: ${dataObj.destination_hospital}%0ANotes: ${dataObj.additional_notes || 'Aucune'}`;
+                alert("Une erreur réseau a eu lieu. Vous allez être redirigé vers votre boîte mail pour finaliser l'envoi, ou appelez-nous au 06 38 51 81 37.");
+                window.location.href = `mailto:contact@central-taxi.fr?subject=${encodeURIComponent(subject)}&body=${body}`;
+            } finally {
                 submitBtn.innerHTML = originalBtnText;
                 submitBtn.disabled = false;
             }

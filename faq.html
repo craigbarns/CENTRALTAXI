@@ -13,6 +13,16 @@
     <meta name="theme-color" content="#DA4D14">
     <link rel="canonical" href="https://www.central-taxi.fr/faq.html">
 
+    <!-- Open Graph -->
+    <meta property="og:title" content="FAQ Taxi Conventionné CPAM Marseille | Central Taxi">
+    <meta property="og:description" content="Toutes les réponses sur le bon de transport, le tiers payant CPAM et la prise en charge ALD 100% à Marseille.">
+    <meta property="og:url" content="https://www.central-taxi.fr/faq.html">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="Central Taxi">
+    <meta property="og:image" content="https://www.central-taxi.fr/images/logo-central-taxi.png">
+    <meta name="robots" content="index, follow">
+
     <!-- Schema.org FAQPage -->
     <script type="application/ld+json">
     {
@@ -53,6 +63,14 @@
             },
             {
                 "@type": "Question",
+                "name": "Proposez-vous le transport récurrent pour la dialyse ou la chimio ?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Absolument. Nous planifions l'ensemble de vos séries de rendez-vous pour toute la durée de votre traitement afin que vous ayez l'esprit totalement tranquille."
+                }
+            },
+            {
+                "@type": "Question",
                 "name": "Quels sont les hôpitaux desservis à Marseille ?",
                 "acceptedAnswer": {
                     "@type": "Answer",
@@ -84,14 +102,29 @@
                 <ul class="header__nav-list">
                     <li><a href="index.html" class="header__nav-link">Accueil</a></li>
                     <li><a href="index.html#hopitaux" class="header__nav-link">Hôpitaux</a></li>
+                    <li><a href="index.html#services" class="header__nav-link">Services</a></li>
                     <li><a href="faq.html" class="header__nav-link active">FAQ</a></li>
                     <li><a href="avis.html" class="header__nav-link">Avis (4.9★)</a></li>
                     <li><a href="reservation.html" class="header__nav-link header__nav-link--cta"><i class="fa-solid fa-calendar-plus"></i> Réserver</a></li>
                 </ul>
             </nav>
-            <a href="javascript:void(0)" class="header__phone phone-link" data-phone="0638518137"><i class="fa-solid fa-phone"></i><span>06 38 51 81 37</span></a>
+            <a href="tel:0638518137" class="header__phone phone-link" data-phone="0638518137"><i class="fa-solid fa-phone"></i><span>06 38 51 81 37</span></a>
+            <button class="header__hamburger" id="hamburger-btn" aria-label="Menu"><span></span><span></span><span></span></button>
         </div>
     </header>
+
+    <!-- Mobile Nav -->
+    <div class="mobile-nav" id="mobile-nav">
+        <ul class="mobile-nav__list">
+            <li><a href="index.html" class="mobile-nav__link">Accueil</a></li>
+            <li><a href="index.html#hopitaux" class="mobile-nav__link">Hôpitaux</a></li>
+            <li><a href="index.html#services" class="mobile-nav__link">Services</a></li>
+            <li><a href="faq.html" class="mobile-nav__link">FAQ</a></li>
+            <li><a href="avis.html" class="mobile-nav__link">Avis Patients (4.9★)</a></li>
+            <li><a href="reservation.html" class="mobile-nav__link mobile-nav__link--cta"><i class="fa-solid fa-calendar-plus"></i> Réserver un transport</a></li>
+        </ul>
+        <a href="tel:0638518137" class="mobile-nav__phone phone-link" data-phone="0638518137"><i class="fa-solid fa-phone"></i> 06 38 51 81 37</a>
+    </div>
 
     <section class="page-hero">
         <div class="container">
@@ -112,21 +145,21 @@
                 <h2><i class="fa-solid fa-file-invoice-dollar"></i> Bon de transport & Tiers Payant CPAM</h2>
                 <div class="accordion">
                     <div class="accordion-item">
-                        <button class="accordion-header">Comment bénéficier d'un taxi conventionné CPAM à Marseille ? <i class="fa-solid fa-chevron-down"></i></button>
+                        <button type="button" class="accordion-header">Comment bénéficier d'un taxi conventionné CPAM à Marseille ? <i class="fa-solid fa-chevron-down"></i></button>
                         <div class="accordion-content">
                             <p>Pour bénéficier d'un transport conventionné sans avance de frais, vous devez demander à votre médecin une <strong>Prescription Médicale de Transport (PMT)</strong> précisant le mode de transport "Taxi conventionné" ou "VSL" avant d'effectuer la course.</p>
                         </div>
                     </div>
 
                     <div class="accordion-item">
-                        <button class="accordion-header">Faut-il avancer de l'argent lors de la course ? <i class="fa-solid fa-chevron-down"></i></button>
+                        <button type="button" class="accordion-header">Faut-il avancer de l'argent lors de la course ? <i class="fa-solid fa-chevron-down"></i></button>
                         <div class="accordion-content">
                             <p>Non ! Si votre bon de transport est à 100% (ALD, chimiothérapie, dialyse, accident du travail, maternité), nous pratiquons le <strong>tiers payant direct avec la CPAM</strong>. Vous n'avez rien à régler au chauffeur.</p>
                         </div>
                     </div>
 
                     <div class="accordion-item">
-                        <button class="accordion-header">Quels documents dois-je présenter lors du trajet ? <i class="fa-solid fa-chevron-down"></i></button>
+                        <button type="button" class="accordion-header">Quels documents dois-je présenter lors du trajet ? <i class="fa-solid fa-chevron-down"></i></button>
                         <div class="accordion-content">
                             <p>Vous devez simplement remettre au chauffeur :<br>
                             1. L'original de la Prescription Médicale de Transport (volet 1 et 2)<br>
@@ -135,16 +168,30 @@
                     </div>
 
                     <div class="accordion-item">
-                        <button class="accordion-header">Un accompagnant a-t-il le droit de voyager avec moi ? <i class="fa-solid fa-chevron-down"></i></button>
+                        <button type="button" class="accordion-header">Un accompagnant a-t-il le droit de voyager avec moi ? <i class="fa-solid fa-chevron-down"></i></button>
                         <div class="accordion-content">
                             <p>Oui, si votre état de santé le justifie et que le médecin a coché la case "Accompagnant nécessaire" sur le bon de transport (ou s'il s'agit d'un enfant mineur).</p>
                         </div>
                     </div>
 
                     <div class="accordion-item">
-                        <button class="accordion-header">Proposez-vous le transport récurrent pour la dialyse ou la chimio ? <i class="fa-solid fa-chevron-down"></i></button>
+                        <button type="button" class="accordion-header">Proposez-vous le transport récurrent pour la dialyse ou la chimio ? <i class="fa-solid fa-chevron-down"></i></button>
                         <div class="accordion-content">
                             <p>Absolument. Nous planifions l'ensemble de vos séries de rendez-vous pour toute la durée de votre traitement afin que vous ayez l'esprit totalement tranquille.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button type="button" class="accordion-header">Quels sont les hôpitaux desservis à Marseille ? <i class="fa-solid fa-chevron-down"></i></button>
+                        <div class="accordion-content">
+                            <p>Central Taxi dessert tous les établissements de santé : <a href="taxi-conventionne-hopital-timone.html">Hôpital la Timone</a>, <a href="taxi-conventionne-institut-paoli-calmettes.html">Institut Paoli-Calmettes</a>, <a href="taxi-conventionne-hopital-nord.html">Hôpital Nord</a>, Hôpital la Conception, Hôpital Européen, Hôpital Saint-Joseph, Hôpital Sainte-Marguerite, Hôpital Clairval, Clinique Bouchard, etc.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <button type="button" class="accordion-header">Comment réserver mon taxi médicalisé ? <i class="fa-solid fa-chevron-down"></i></button>
+                        <div class="accordion-content">
+                            <p>Vous pouvez réserver directement en ligne sur notre <a href="reservation.html">page de réservation</a> ou par téléphone au 06 38 51 81 37. Pour les soins récurrents (chimio, dialyse), nous planifions l'ensemble de vos rendez-vous.</p>
                         </div>
                     </div>
                 </div>
@@ -152,14 +199,50 @@
                 <div class="faq-cta-banner">
                     <h3>Une question spécifique sur vos droits de transport ?</h3>
                     <p>Appelez directement notre régulateur qui vérifiera avec vous la validité de votre bon de transport :</p>
-                    <a href="javascript:void(0)" class="btn btn--primary phone-link" data-phone="0638518137"><i class="fa-solid fa-phone"></i> 06 38 51 81 37</a>
+                    <a href="tel:0638518137" class="btn btn--primary phone-link" data-phone="0638518137"><i class="fa-solid fa-phone"></i> 06 38 51 81 37</a>
                 </div>
             </div>
         </div>
     </section>
 
     <footer class="footer">
-        <div class="container"><div class="footer__bottom"><p>&copy; 2026 Central Taxi — FAQ Taxi Conventionné Marseille.</p></div></div>
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__col">
+                    <img src="images/logo-central-taxi.png" alt="Central Taxi Marseille" class="footer__logo">
+                    <p class="footer__desc">Société de taxis conventionnés CPAM spécialisée dans le transport médical assis à Marseille et dans les Bouches-du-Rhône depuis plus de 15 ans.</p>
+                    <div class="footer__badge">
+                        <i class="fa-solid fa-shield-heart"></i> <span>Tiers Payant CPAM • Sans avance de frais</span>
+                    </div>
+                </div>
+                <div class="footer__col">
+                    <h4 class="footer__title">Hôpitaux desservis</h4>
+                    <ul class="footer__links">
+                        <li><a href="taxi-conventionne-hopital-timone.html">Taxi Hôpital la Timone</a></li>
+                        <li><a href="taxi-conventionne-institut-paoli-calmettes.html">Taxi Institut Paoli-Calmettes</a></li>
+                        <li><a href="taxi-conventionne-hopital-nord.html">Taxi Hôpital Nord Marseille</a></li>
+                        <li><a href="index.html#hopitaux">Tous les hôpitaux desservis</a></li>
+                    </ul>
+                </div>
+                <div class="footer__col">
+                    <h4 class="footer__title">Liens utiles</h4>
+                    <ul class="footer__links">
+                        <li><a href="reservation.html">Réserver en ligne</a></li>
+                        <li><a href="taxi-chimiotherapie-marseille.html">Taxi Chimiothérapie</a></li>
+                        <li><a href="faq.html">Foire Aux Questions (FAQ)</a></li>
+                        <li><a href="avis.html">Avis Patients (4.9★)</a></li>
+                    </ul>
+                </div>
+                <div class="footer__col">
+                    <h4 class="footer__title">Contact Direct</h4>
+                    <p class="footer__contact-item"><i class="fa-solid fa-phone"></i> <a href="tel:0638518137" class="phone-link" data-phone="0638518137">06 38 51 81 37</a></p>
+                    <p class="footer__contact-item"><i class="fa-solid fa-location-dot"></i> 68 Avenue de Saint-Menet, 13011 Marseille</p>
+                    <p class="footer__contact-item"><i class="fa-solid fa-envelope"></i> <a href="mailto:contact@central-taxi.fr">contact@central-taxi.fr</a></p>
+                    <p class="footer__contact-item"><i class="fa-solid fa-clock"></i> 7j/7 - 24h/24 (sur réservation)</p>
+                </div>
+            </div>
+            <div class="footer__bottom"><p>&copy; 2026 Central Taxi — FAQ Taxi Conventionné Marseille.</p></div>
+        </div>
     </footer>
     <script src="script.js"></script>
 </body>

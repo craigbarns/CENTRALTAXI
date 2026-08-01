@@ -91,7 +91,7 @@
                 </ul>
             </nav>
 
-            <a href="javascript:void(0)" class="header__phone phone-link" id="header-phone-btn" data-phone="0638518137">
+            <a href="tel:0638518137" class="header__phone phone-link" id="header-phone-btn" data-phone="0638518137">
                 <i class="fa-solid fa-phone"></i>
                 <span>06 38 51 81 37</span>
             </a>
@@ -114,7 +114,7 @@
             <li><a href="avis.html" class="mobile-nav__link">Avis Clients</a></li>
             <li><a href="reservation.html" class="mobile-nav__link mobile-nav__link--cta"><i class="fa-solid fa-calendar-plus"></i> Réserver un transport</a></li>
         </ul>
-        <a href="javascript:void(0)" class="mobile-nav__phone phone-link" data-phone="0638518137">
+        <a href="tel:0638518137" class="mobile-nav__phone phone-link" data-phone="0638518137">
             <i class="fa-solid fa-phone"></i> 06 38 51 81 37
         </a>
     </div>
@@ -143,7 +143,7 @@
                 <div class="reservation-card shadow-lg">
                     <div class="reservation-card__header">
                         <h2><i class="fa-solid fa-route"></i> Formulaire de réservation rapide</h2>
-                        <p>Remplissez ce formulaire et notre régulation vous confirmera immédiatement votre prise en charge par SMS et appel.</p>
+                        <p>Remplissez ce formulaire et notre service de régulation vous confirmera immédiatement votre prise en charge par SMS et appel.</p>
                     </div>
 
                     <form id="online-booking-form" class="booking-form">
@@ -151,11 +151,12 @@
                         <input type="hidden" name="access_key" value="b3ce89ca-8b44-427b-83f3-20646cead8e2">
                         <input type="hidden" name="subject" value="🚕 Nouvelle Réservation - Central Taxi Web">
                         <input type="hidden" name="from_name" value="Central Taxi - Formulaire Réservation">
+                        <input type="checkbox" name="botcheck" class="hidden" style="display:none;" tabindex="-1" autocomplete="off">
 
                         <!-- Type de transport -->
                         <div class="form-group full-width">
-                            <label class="form-label">Motif du transport médical *</label>
-                            <div class="radio-tiles">
+                            <span class="form-label" id="motif-label">Motif du transport médical *</span>
+                            <div class="radio-tiles" role="radiogroup" aria-labelledby="motif-label">
                                 <label class="radio-tile">
                                     <input type="radio" name="reason" value="Chimiothérapie / Radiothérapie" checked>
                                     <span class="radio-tile__box">
@@ -190,7 +191,7 @@
                         <!-- Adresses -->
                         <div class="form-group">
                             <label for="pickup-address" class="form-label"><i class="fa-solid fa-location-dot"></i> Adresse de départ (Domicile) *</label>
-                            <input type="text" id="pickup-address" name="pickup_address" class="form-input" placeholder="Ex: 68 Avenue de Saint-Menet, 13011 Marseille" required>
+                            <input type="text" id="pickup-address" name="pickup_address" class="form-input" placeholder="Ex : 68 Avenue de Saint-Menet, 13011 Marseille" autocomplete="street-address" required>
                         </div>
 
                         <div class="form-group">
@@ -207,7 +208,7 @@
                                 <option value="Hôpital Clairval (Ramsay Santé)">Hôpital Clairval (Ramsay Santé)</option>
                                 <option value="Clinique Bouchard">Clinique Bouchard</option>
                                 <option value="Clinique Chantecler">Clinique Chantecler</option>
-                                <option value="Autre établissement de soins">Autre adresse médicale (préciser en note)</option>
+                                <option value="Autre établissement de soins">Autre établissement de soins (préciser en note)</option>
                             </select>
                         </div>
 
@@ -225,12 +226,12 @@
                         <!-- Informations patient -->
                         <div class="form-group">
                             <label for="patient-name" class="form-label"><i class="fa-solid fa-user"></i> Nom et Prénom du Patient *</label>
-                            <input type="text" id="patient-name" name="patient_name" class="form-input" placeholder="M. / Mme Martin Jean" required>
+                            <input type="text" id="patient-name" name="patient_name" class="form-input" placeholder="M. / Mme Martin Jean" autocomplete="name" required>
                         </div>
 
                         <div class="form-group">
                             <label for="patient-phone" class="form-label"><i class="fa-solid fa-phone"></i> Numéro de Téléphone *</label>
-                            <input type="tel" id="patient-phone" name="patient_phone" class="form-input" placeholder="06 12 34 56 78" required>
+                            <input type="tel" id="patient-phone" name="patient_phone" class="form-input" placeholder="06 12 34 56 78" inputmode="tel" autocomplete="tel" pattern="[0-9+ .()-]{8,20}" required>
                         </div>
 
                         <!-- Options CPAM & ALD -->
@@ -239,13 +240,13 @@
                                 <input type="checkbox" id="has-bon-transport" name="has_bon_transport" checked>
                                 <label for="has-bon-transport">
                                     <strong>J'ai une Prescription Médicale de Transport (Bon de transport prescrit par mon médecin)</strong>
-                                    <span>Bénéficiez du Tiers-Payant CPAM sans avancée de frais.</span>
+                                    <span>Bénéficiez du Tiers-Payant CPAM sans avance de frais.</span>
                                 </label>
                             </div>
                             <div class="checkbox-option" style="margin-top: 12px;">
                                 <input type="checkbox" id="is-recurring" name="is_recurring">
                                 <label for="is-recurring">
-                                    <strong>C'est un transport récurrent (ex: 3 séances de chimio ou dialyse par semaine)</strong>
+                                    <strong>C'est un transport récurrent (ex : 3 séances de chimio ou dialyse par semaine)</strong>
                                     <span>Nous planifions automatiquement l'ensemble de vos séries de soins.</span>
                                 </label>
                             </div>
@@ -266,22 +267,6 @@
                         </div>
                     </form>
 
-                    <!-- Message de succès dynamique -->
-                    <div id="booking-success-message" class="booking-success hidden">
-                        <div class="booking-success__icon">
-                            <i class="fa-solid fa-circle-check"></i>
-                        </div>
-                        <h3>Réservation enregistrée avec succès !</h3>
-                        <p>Merci M./Mme <strong id="success-patient-name"></strong>, nous avons bien reçu votre demande pour le <strong id="success-date-time"></strong> à destination de <strong id="success-hospital"></strong>.</p>
-                        <div class="booking-success__details">
-                            <p><i class="fa-solid fa-phone"></i> Notre régulateur va vous appeler ou vous envoyer un SMS de confirmation dans les <strong>10 prochaines minutes</strong> au <strong id="success-phone"></strong>.</p>
-                        </div>
-                        <div class="booking-success__actions">
-                            <a href="javascript:void(0)" class="btn btn--secondary phone-link" data-phone="0638518137">
-                                <i class="fa-solid fa-phone"></i> Besoin de confirmation immédiate ? 06 38 51 81 37
-                            </a>
-                        </div>
-                    </div>
                 </div>
 
                 <!-- SIDEBAR INFORMATION -->
@@ -300,14 +285,14 @@
                         <p>Notre équipe est spécifiquement formée à l'accompagnement bienveillant des patients sous chimiothérapie, radiothérapie (Institut Paoli-Calmettes, Timone) et traitements au long cours.</p>
                         <div class="rating-badge">
                             <div class="stars">★★★★★</div>
-                            <span>4.9 / 5 d'après plus de 150 avis patients</span>
+                            <span>4.9 / 5 d'après 148 avis patients vérifiés</span>
                         </div>
                     </div>
 
                     <div class="info-card emergency-card">
                         <h3><i class="fa-solid fa-headset"></i> Réservation de dernière minute ?</h3>
                         <p>Un rendez-vous d'urgence ou une sortie d'hôpital non programmée ? Appelez notre ligne directe 7j/7 :</p>
-                        <a href="javascript:void(0)" class="btn btn--primary phone-link" data-phone="0638518137">
+                        <a href="tel:0638518137" class="btn btn--primary phone-link" data-phone="0638518137">
                             <i class="fa-solid fa-phone-volume"></i> 06 38 51 81 37
                         </a>
                     </div>
@@ -335,9 +320,9 @@
                         <li><a href="taxi-conventionne-hopital-timone.html">Taxi Hôpital la Timone</a></li>
                         <li><a href="taxi-conventionne-institut-paoli-calmettes.html">Taxi Institut Paoli-Calmettes (IPC)</a></li>
                         <li><a href="taxi-conventionne-hopital-nord.html">Taxi Hôpital Nord Marseille</a></li>
-                        <li><a href="taxi-conventionne-hopital-conception.html">Taxi Hôpital la Conception</a></li>
-                        <li><a href="taxi-conventionne-hopital-europeen.html">Taxi Hôpital Européen</a></li>
-                        <li><a href="taxi-conventionne-hopital-saint-joseph.html">Taxi Hôpital Saint-Joseph</a></li>
+                        <li><a href="reservation.html?hospital=Conception">Taxi Hôpital la Conception</a></li>
+                        <li><a href="reservation.html?hospital=Europeen">Taxi Hôpital Européen</a></li>
+                        <li><a href="index.html#hopitaux">Tous les hôpitaux desservis</a></li>
                     </ul>
                 </div>
 
@@ -345,17 +330,16 @@
                     <h4 class="footer__title">Pathologies & Soins</h4>
                     <ul class="footer__links">
                         <li><a href="taxi-chimiotherapie-marseille.html">Taxi Chimiothérapie</a></li>
-                        <li><a href="taxi-radiotherapie-marseille.html">Taxi Radiothérapie</a></li>
-                        <li><a href="taxi-dialyse-marseille.html">Taxi Dialyse régulier</a></li>
-                        <li><a href="transport-ald-100-marseille.html">Transport ALD 100%</a></li>
-                        <li><a href="taxi-sans-avance-de-frais-marseille.html">Tiers Payant sans frais</a></li>
+                        <li><a href="reservation.html?reason=Dialyse">Taxi Dialyse régulier</a></li>
+                        <li><a href="reservation.html?reason=Consultation">Consultations & Examens</a></li>
                         <li><a href="faq.html">Foire Aux Questions (FAQ)</a></li>
+                        <li><a href="avis.html">Avis Patients (4.9★)</a></li>
                     </ul>
                 </div>
 
                 <div class="footer__col">
                     <h4 class="footer__title">Contact Direct</h4>
-                    <p class="footer__contact-item"><i class="fa-solid fa-phone"></i> <a href="javascript:void(0)" class="phone-link" data-phone="0638518137">06 38 51 81 37</a></p>
+                    <p class="footer__contact-item"><i class="fa-solid fa-phone"></i> <a href="tel:0638518137" class="phone-link" data-phone="0638518137">06 38 51 81 37</a></p>
                     <p class="footer__contact-item"><i class="fa-solid fa-location-dot"></i> 68 Avenue de Saint-Menet, 13011 Marseille</p>
                     <p class="footer__contact-item"><i class="fa-solid fa-clock"></i> 7j/7 - 24h/24 (sur réservation)</p>
                 </div>
@@ -368,7 +352,7 @@
 
     <!-- Floating Call Button Mobile -->
     <div class="floating-call">
-        <a href="javascript:void(0)" class="floating-call__btn phone-link" data-phone="0638518137">
+        <a href="tel:0638518137" class="floating-call__btn phone-link" data-phone="0638518137">
             <i class="fa-solid fa-phone"></i> Appeler 06 38 51 81 37
         </a>
     </div>
