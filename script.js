@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.phone-link').forEach(link => {
         link.addEventListener('click', function (e) {
             e.preventDefault();
-            const phone = this.getAttribute('data-phone') || '0638518137';
+            const phone = this.getAttribute('data-phone') || '0787049719';
 
             if (isMobileDevice()) {
                 // Sur mobile : appel natif
@@ -492,14 +492,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 const data = await response.json().catch(() => ({}));
-                alert('Erreur lors de l\'envoi : ' + (data.message || 'veuillez réessayer ou nous appeler au 06 38 51 81 37.'));
+                alert('Erreur lors de l\'envoi : ' + (data.message || 'veuillez réessayer ou nous appeler au 07 87 04 97 19.'));
             } catch (err) {
                 console.error('Erreur Web3Forms:', err);
                 // Fallback email si le réseau ou un bloqueur empêche l'envoi
                 const dataObj = Object.fromEntries(formData.entries());
                 const subject = `Réservation Transport - ${dataObj.patient_name || ''}`;
                 const body = `Nom: ${dataObj.patient_name}%0ATéléphone: ${dataObj.patient_phone}%0AMotif: ${dataObj.reason}%0ADate: ${dataObj.booking_date} ${dataObj.booking_time}%0ADépart: ${dataObj.pickup_address}%0ADestination: ${dataObj.destination_hospital}%0ANotes: ${dataObj.additional_notes || 'Aucune'}`;
-                alert("Une erreur réseau a eu lieu. Vous allez être redirigé vers votre boîte mail pour finaliser l'envoi, ou appelez-nous au 06 38 51 81 37.");
+                alert("Une erreur réseau a eu lieu. Vous allez être redirigé vers votre boîte mail pour finaliser l'envoi, ou appelez-nous au 07 87 04 97 19.");
                 window.location.href = `mailto:contact@central-taxi.fr?subject=${encodeURIComponent(subject)}&body=${body}`;
             } finally {
                 submitBtn.innerHTML = originalBtnText;
